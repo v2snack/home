@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V2 Snack - Teman Pas untuk Yang Doyan Ngemil!</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/cPZNJSg/Logo-V2-Snack.png">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/cPZNJSg/Logo-V2-Snack.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F97316',
+                        'primary-dark': '#EA580C',
+                        secondary: '#F59E0B',
+                        cream: '#FFFBEB',
+                        charcoal: '#1F2937'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .product-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .product-card:hover { transform: translateY(-4px); }
+    </style>
+</head>
+<body class="bg-white text-charcoal font-sans flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-amber-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <a href="#" class="text-2xl font-black text-primary tracking-tight flex items-center gap-2">
+                <!-- Logo V2 Snack Menggantikan Icon Kue -->
+                <img 
+                    src="https://i.ibb.co/cPZNJSg/Logo-V2-Snack.png" 
+                    alt="V2 Snack Logo" 
+                    class="h-7 sm:h-9 md:h-10 w-auto object-contain transition-all"
+                >
+                <span>V2 SNACK</span>
+            </a>
+            <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded-full border border-amber-200">
+                Est. April 2024
+            </span>
+        </div>
+
+            <nav class="hidden md:flex items-center space-x-8 font-medium">
+                <a href="#hero" class="hover:text-primary transition-colors" data-i18n="nav_home">Beranda</a>
+                <a href="#features" class="hover:text-primary transition-colors" data-i18n="nav_features">Keunggulan</a>
+                <a href="#catalog" class="hover:text-primary transition-colors" data-i18n="nav_catalog">Katalog</a>
+                <a href="#location" class="hover:text-primary transition-colors" data-i18n="nav_location">Lokasi</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+              <div class="relative inline-block text-left">
+                <div class="relative flex items-center">
+                    <i class="fa-solid fa-globe text-orange-500 absolute left-2.5 z-10 text-sm pointer-events-none"></i>
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-cream border border-amber-300 text-charcoal text-sm rounded-lg focus:ring-primary focus:border-primary block p-2 pl-8 cursor-pointer font-bold">
+                        <option value="id">ID</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+            </div>
+
+
+                <a href="https://wa.me/6282322920307?text=Halo%20V2%20Snack,%20saya%20ingin%20pesan%20camilan" target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full font-semibold transition shadow-md">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span data-i18n="btn_wa">Pesan WA</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="relative bg-gradient-to-b from-cream to-white py-16 lg:py-24 border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div class="lg:w-1/2 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-amber-100 text-amber-900 px-4 py-2 rounded-full text-sm font-semibold border border-amber-200 shadow-sm">
+                    <i class="fa-solid fa-plane-departure text-primary"></i>
+                    <span data-i18n="hero_badge">Melayani Pengiriman Luar Negeri ✈️</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-tight mb-6" data-i18n="hero_title">
+                  Teman Pas untuk Yang <span class="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">Doyan Ngemil!</span>
+                  </h1>
+                <p class="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0" data-i18n="hero_subtitle">
+                    Nikmati aneka camilan kiloan berkualitas super gurih, renyah, dan manis. Dikemas higienis dengan harga pas di kantong untuk segala suasana.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                    <a href="#catalog" class="bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition text-center" data-i18n="hero_cta_catalog">
+                        Lihat Katalog Produk
+                    </a>
+                    <a href="https://wa.me/6282322920307" target="_blank" class="bg-white border-2 border-primary text-primary hover:bg-orange-50 font-bold px-8 py-4 rounded-xl shadow-md transition text-center flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span data-i18n="hero_cta_order">Order via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+            <div class="lg:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute inset-0 bg-secondary opacity-20 blur-3xl rounded-full"></div>
+                    <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&q=80&w=800" alt="V2 Snack Hero" class="relative rounded-3xl shadow-2xl border-4 border-white object-cover w-full h-80 sm:h-96">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-charcoal" data-i18n="features_title">Mengapa Memilih V2 Snack?</h2>
+                <div class="h-1 w-20 bg-primary mx-auto mt-2 rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-cream p-8 rounded-2xl border border-amber-200 text-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6 shadow-md">
+                        <i class="fa-solid fa-weight-hanging"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feat1_title">Kiloan & Hemat</h3>
+                    <p class="text-gray-600" data-i18n="feat1_desc">Porsi fleksibel mulai dari 250g hingga 1kg. Beli banyak makin untung dan hemat untuk stok di rumah!</p>
+                </div>
+                <div class="bg-cream p-8 rounded-2xl border border-amber-200 text-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6 shadow-md">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feat2_title">Rasa Autentik & Higienis</h3>
+                    <p class="text-gray-600" data-i18n="feat2_desc">Diproses dan dikemas secara bersih dengan bumbu pilihan terbaik yang terjamin kerenyahannya.</p>
+                </div>
+                <div class="bg-cream p-8 rounded-2xl border border-amber-200 text-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6 shadow-md">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feat3_title">Pengiriman Luar Negeri</h3>
+                    <p class="text-gray-600" data-i18n="feat3_desc">Melayani pengiriman internasional dengan paking aman hingga sampai di tangan Anda di manapun berada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="py-16 bg-cream border-t border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <h2 class="text-3xl font-bold text-charcoal" data-i18n="catalog_title">Katalog Camilan Favorit</h2>
+                <p class="text-gray-600 mt-2" data-i18n="catalog_subtitle">Pilih varian rasa kesukaanmu dan langsung dipesan!</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="categoryTabs">
+                <button onclick="filterCategory('all')" class="tab-btn px-5 py-2.5 rounded-full font-semibold text-sm transition bg-primary text-white shadow" data-cat="all" data-i18n="cat_all">Semua</button>
+                <button onclick="filterCategory('Gurih & Pedas')" class="tab-btn px-5 py-2.5 rounded-full font-semibold text-sm transition bg-white text-gray-700 hover:bg-amber-100 border border-gray-200" data-cat="Gurih & Pedas" data-i18n="cat_spicy">Gurih & Pedas</button>
+                <button onclick="filterCategory('Olahan Pisang & Singkong')" class="tab-btn px-5 py-2.5 rounded-full font-semibold text-sm transition bg-white text-gray-700 hover:bg-amber-100 border border-gray-200" data-cat="Olahan Pisang & Singkong" data-i18n="cat_banana">Olahan Pisang & Singkong</button>
+                <button onclick="filterCategory('Asin & Kacang')" class="tab-btn px-5 py-2.5 rounded-full font-semibold text-sm transition bg-white text-gray-700 hover:bg-amber-100 border border-gray-200" data-cat="Asin & Kacang" data-i18n="cat_salty">Asin & Kacang</button>
+                <button onclick="filterCategory('Manis & Cokelat')" class="tab-btn px-5 py-2.5 rounded-full font-semibold text-sm transition bg-white text-gray-700 hover:bg-amber-100 border border-gray-200" data-cat="Manis & Cokelat" data-i18n="cat_sweet">Manis & Cokelat</button>
+            </div>
+
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gradient-to-r from-amber-500 to-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-left max-w-xl">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-box-open"></i>
+                    <span data-i18n="banner_title">Ingin Kirim Camilan ke Luar Negeri?</span>
+                </h3>
+                <p class="text-amber-100" data-i18n="banner_desc">Kami siap melayani pesanan ekspor/pengiriman internasional untuk mengobati rasa kangen kuliner Indonesia.</p>
+            </div>
+            <a href="mailto:v.two.snack@gmail.com" class="bg-white text-primary hover:bg-amber-50 font-bold px-6 py-3 rounded-xl shadow-lg transition whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-envelope"></i>
+                <span data-i18n="banner_cta">Email: v.two.snack@gmail.com</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="location" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold text-charcoal" data-i18n="loc_title">Lokasi Toko & Kontak</h2>
+                    <p class="text-gray-600" data-i18n="loc_desc">Kunjungi lokasi kami atau hubungi tim customer service kami untuk order langsung maupun pertanyaan seputar kemitraan.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-cream rounded-xl border border-amber-200">
+                            <i class="fa-solid fa-location-dot text-primary text-2xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-charcoal" data-i18n="addr_label">Alamat Lengkap:</h4>
+                                <p class="text-gray-700">Perum GRC Blok E7 no 15, Kedung Waringin, Bekasi, Jawa Barat 17540</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 bg-cream rounded-xl border border-amber-200">
+                            <i class="fa-brands fa-whatsapp text-green-500 text-2xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-charcoal">WhatsApp:</h4>
+                                <p class="text-gray-700">(+62) 82322920307</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 bg-cream rounded-xl border border-amber-200">
+                            <i class="fa-solid fa-envelope text-primary text-2xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-charcoal">Email:</h4>
+                                <p class="text-gray-700">v.two.snack@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-80 bg-gray-200 rounded-2xl overflow-hidden shadow-md flex items-center justify-center relative border-2 border-amber-200">
+                    <iframe title="Map V2 Snack" class="w-full h-full border-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3966.056916155401!2d107.2442276!3d-6.2562327!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69839845d97611%3A0x4f173eac7e54d44a!2sV2%20Snack!5e0!3m2!1sid!2sid!4v1788067018740!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-charcoal text-white pt-12 pb-6 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-700 pb-8 gap-4">
+            <!-- Brand Logo & Name -->
+            <div class="flex items-center space-x-2">
+                <!-- Logo V2 Snack Menggantikan Icon Cookie -->
+                <img 
+                    src="https://i.ibb.co/cPZNJSg/Logo-V2-Snack.png" 
+                    alt="V2 Snack Logo" 
+                    class="h-7 w-auto object-contain"
+                >
+                <span class="text-xl font-bold tracking-tight">V2 SNACK</span>
+            </div>
+
+            <!-- Copyright Notice -->
+            <div class="text-sm text-gray-400">
+                Copyright © 2024 - 2026 V2 Snack. All Rights Reserved.
+            </div>
+
+            <!-- Admin Button -->
+            <div>
+                <button onclick="openAdminLoginModal()" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-600 px-3 py-1.5 rounded transition flex items-center gap-2">
+                    <i class="fa-solid fa-lock"></i>
+                    <span data-i18n="admin_btn">Admin Login</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <div id="loginModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl relative">
+            <button onclick="closeModal('loginModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-xl font-bold mb-4 text-charcoal flex items-center gap-2">
+                <i class="fa-solid fa-user-shield text-primary"></i> Login Admin V2 Snack
+            </h3>
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" id="adminPassword" placeholder="Masukkan password (admin123)" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-primary focus:border-primary" required>
+                </div>
+                <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2.5 rounded-lg transition">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-6 max-w-lg w-full shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('adminModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="flex items-center justify-between mb-4 border-b pb-3">
+                <h3 class="text-xl font-bold text-charcoal flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-primary"></i> Batch Price Manager
+                </h3>
+                <button onclick="logoutAdmin()" class="text-xs text-red-500 hover:underline">Logout</button>
+            </div>
+
+            <form onsubmit="applyPriceBatch(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Mode Penyesuaian</label>
+                    <select id="priceMode" class="w-full border border-gray-300 rounded-lg p-2.5">
+                        <option value="increase">Naikkan Harga (+)</option>
+                        <option value="decrease">Turunkan Harga (-)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Tipe Perubahan</label>
+                    <select id="priceType" class="w-full border border-gray-300 rounded-lg p-2.5">
+                        <option value="percent">Persentase (%)</option>
+                        <option value="flat">Nominal Flat (Rp)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Nilai Perubahan</label>
+                    <input type="number" id="priceValue" placeholder="Misal: 10 atau 2000" class="w-full border border-gray-300 rounded-lg p-2.5" required min="1">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Target Perubahan</label>
+                    <select id="priceTarget" class="w-full border border-gray-300 rounded-lg p-2.5">
+                        <option value="all">Semua Produk</option>
+                        <option value="Gurih & Pedas">Gurih & Pedas</option>
+                        <option value="Olahan Pisang & Singkong">Olahan Pisang & Singkong</option>
+                        <option value="Asin & Kacang">Asin & Kacang</option>
+                        <option value="Manis & Cokelat">Manis & Cokelat</option>
+                    </select>
+                </div>
+
+                <div class="pt-2 space-y-2">
+                    <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2.5 rounded-lg transition shadow">Terapkan Perubahan</button>
+                    <button type="button" onclick="resetPrices()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2.5 rounded-lg transition">Reset Harga Ke Awal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // DATA DICTIONARY MULTI-BAHASA
+        const i18n = {
+            id: {
+                nav_home: "Beranda",
+                nav_features: "Keunggulan",
+                nav_catalog: "Katalog",
+                nav_location: "Lokasi",
+                btn_wa: "Pesan WA",
+                hero_badge: "Melayani Pengiriman Luar Negeri ✈️",
+                hero_title: 'Teman Pas untuk Yang <span class="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">Doyan Ngemil!</span>',
+                hero_subtitle: "Nikmati aneka camilan kiloan berkualitas super gurih, renyah, dan manis. Dikemas higienis dengan harga pas di kantong untuk segala suasana.",
+                hero_cta_catalog: "Lihat Katalog Produk",
+                hero_cta_order: "Order via WhatsApp",
+                features_title: "Mengapa Memilih V2 Snack?",
+                feat1_title: "Kiloan & Hemat",
+                feat1_desc: "Porsi fleksibel mulai dari 250g hingga 1kg. Beli banyak makin untung dan hemat untuk stok di rumah!",
+                feat2_title: "Rasa Autentik & Higienis",
+                feat2_desc: "Diproses dan dikemas secara bersih dengan bumbu pilihan terbaik yang terjamin kerenyahannya.",
+                feat3_title: "Pengiriman Luar Negeri",
+                feat3_desc: "Melayani pengiriman internasional dengan paking aman hingga sampai di tangan Anda di manapun berada.",
+                catalog_title: "Katalog Camilan Favorit",
+                catalog_subtitle: "Pilih varian rasa kesukaanmu dan langsung dipesan!",
+                cat_all: "Semua",
+                cat_spicy: "Gurih & Pedas",
+                cat_banana: "Olahan Pisang & Singkong",
+                cat_salty: "Asin & Kacang",
+                cat_sweet: "Manis & Cokelat",
+                banner_title: "Ingin Kirim Camilan ke Luar Negeri?",
+                banner_desc: "Kami siap melayani pesanan ekspor/pengiriman internasional untuk mengobati rasa kangen kuliner Indonesia.",
+                banner_cta: "Email: v.two.snack@gmail.com",
+                loc_title: "Lokasi Toko & Kontak",
+                loc_desc: "Kunjungi lokasi kami atau hubungi tim customer service kami untuk order langsung maupun pertanyaan seputar kemitraan.",
+                addr_label: "Alamat Lengkap:",
+                admin_btn: "Admin Login"
+            },
+            en: {
+                nav_home: "Home",
+                nav_features: "Features",
+                nav_catalog: "Catalog",
+                nav_location: "Location",
+                btn_wa: "Order WA",
+                hero_badge: "International Shipping Available ✈️",
+                hero_title: 'The Perfect Buddy for <span class="bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">Snack Lovers!</span>',
+                hero_subtitle: "Enjoy a variety of high-quality bulk snacks: savory, crispy, and sweet. Hygienically packed at wallet-friendly prices for every occasion.",
+                hero_cta_catalog: "View Snack Catalog",
+                hero_cta_order: "Order via WhatsApp",
+                features_title: "Why Choose V2 Snack?",
+                feat1_title: "Bulk & Value Pack",
+                feat1_desc: "Flexible portions from 250g up to 1kg. Buy in bulk for better value and house stock!",
+                feat2_title: "Authentic & Hygienic",
+                feat2_desc: "Cleanly processed and packaged with premium seasonings guaranteed for freshness and crunch.",
+                feat3_title: "Overseas Delivery",
+                feat3_desc: "We serve international shipping with safe packaging until it reaches your doorstep anywhere.",
+                catalog_title: "Favorite Snack Catalog",
+                catalog_subtitle: "Choose your favorite flavor and order right away!",
+                cat_all: "All",
+                cat_spicy: "Savory & Spicy",
+                cat_banana: "Banana & Cassava",
+                cat_salty: "Salty & Nuts",
+                cat_sweet: "Sweet & Chocolate",
+                banner_title: "Want to Ship Snacks Overseas?",
+                banner_desc: "We are ready to handle international export orders to satisfy your cravings for authentic Indonesian snacks.",
+                banner_cta: "Email: v.two.snack@gmail.com",
+                loc_title: "Store Location & Contact",
+                loc_desc: "Visit our store location or contact our customer service team for direct orders and partnership inquiries.",
+                addr_label: "Full Address:",
+                admin_btn: "Admin Login"
+            }
+        };
+
+        // MASTER PRODUCTS DATA
+        const initialProducts = [
+            // Gurih & Pedas
+            { id: 1, name: "Seblak Mix", cat: "Gurih & Pedas", price250: 14000, price1k: 56000, img: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400&q=80" },
+            { id: 2, name: "Basreng Pedas/Original", cat: "Gurih & Pedas", price250: 14000, price1k: 56000, img: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400&q=80" },
+            { id: 3, name: "Pangsit Pedas/Original", cat: "Gurih & Pedas", price250: 13000, price1k: 52000, img: "https://images.unsplash.com/photo-1541529086526-db283c563270?w=400&q=80" },
+            { id: 4, name: "Stik Pedas", cat: "Gurih & Pedas", price250: 13000, price1k: 52000, img: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400&q=80" },
+            { id: 5, name: "Usus Pedas", cat: "Gurih & Pedas", price250: 17000, price1k: 68000, img: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400&q=80" },
+            { id: 6, name: "Keripik Singkong Balado", cat: "Gurih & Pedas", price250: 16000, price1k: 64000, img: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400&q=80" },
+            { id: 7, name: "Keripik Singkong Pedes Nyereset", cat: "Gurih & Pedas", price250: 13000, price1k: 52000, img: "https://images.unsplash.com/photo-1541529086526-db283c563270?w=400&q=80" },
+            { id: 8, name: "Singkong SP", cat: "Gurih & Pedas", price250: 13000, price1k: 52000, img: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400&q=80" },
+
+            // Olahan Pisang & Singkong
+            { id: 9, name: "Pisang Asin Keju", cat: "Olahan Pisang & Singkong", price250: 15000, price1k: 60000, img: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400&q=80" },
+            { id: 10, name: "Pisang Manis", cat: "Olahan Pisang & Singkong", price250: 15000, price1k: 60000, img: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400&q=80" },
+            { id: 11, name: "Keripik Talas", cat: "Olahan Pisang & Singkong", price250: 15000, price1k: 60000, img: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400&q=80" },
+            { id: 12, name: "Stik Sukun", cat: "Olahan Pisang & Singkong", price250: 14000, price1k: 56000, img: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400&q=80" },
+
+            // Asin & Kacang
+            { id: 13, name: "Sumpia Udang", cat: "Asin & Kacang", price250: 13000, price1k: 52000, img: "https://images.unsplash.com/photo-1541529086526-db283c563270?w=400&q=80" },
+            { id: 14, name: "Stik Bawang", cat: "Asin & Kacang", price250: 13000, price1k: 52000, img: "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400&q=80" },
+            { id: 15, name: "Kacang Atom", cat: "Asin & Kacang", price250: 16000, price1k: 64000, img: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400&q=80" },
+            { id: 16, name: "Kacang Campur", cat: "Asin & Kacang", price250: 12000, price1k: 48000, img: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400&q=80" },
+            { id: 17, name: "Tempe Sagu", cat: "Asin & Kacang", price250: 15000, price1k: 60000, img: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400&q=80" },
+            { id: 18, name: "Telur Gabus", cat: "Asin & Kacang", price250: 12000, price1k: 48000, img: "https://images.unsplash.com/photo-1541529086526-db283c563270?w=400&q=80" },
+            { id: 19, name: "Pastel Abon", cat: "Asin & Kacang", price250: 13000, price1k: 52000, img: "https://images.unsplash.com/photo-1541529086526-db283c563270?w=400&q=80" },
+            { id: 20, name: "Rengginang", cat: "Asin & Kacang", price250: 14000, price1k: 56000, img: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400&q=80" },
+            { id: 21, name: "Emping", cat: "Asin & Kacang", price250: 16000, price1k: 64000, img: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400&q=80" },
+            { id: 22, name: "Kerupuk Kulit", cat: "Asin & Kacang", price250: null, price1k: 20000, img: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=400&q=80" },
+
+            // Manis & Cokelat
+            { id: 23, name: "Soes Mini", cat: "Manis & Cokelat", price250: 17000, price1k: 68000, img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80" },
+            { id: 24, name: "Astor Vanila", cat: "Manis & Cokelat", price250: 13000, price1k: 52000, img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80" },
+            { id: 25, name: "Astor Cokelat", cat: "Manis & Cokelat", price250: 13000, price1k: 52000, img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80" },
+            { id: 26, name: "Pang Pang Premium", cat: "Manis & Cokelat", price250: 13000, price1k: 52000, img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80" },
+            { id: 27, name: "Koko Krunch", cat: "Manis & Cokelat", price250: 14000, price1k: 56000, img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80" },
+            { id: 28, name: "Nopia Cokelat", cat: "Manis & Cokelat", price250: 12000, price1k: 48000, img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80" },
+            { id: 29, name: "Inaco", cat: "Manis & Cokelat", price250: 10000, price1k: 40000, img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80" }
+        ];
+
+        // STATE MANAGEMENT
+        let productsState = JSON.parse(JSON.stringify(initialProducts));
+        let activeCategory = 'all';
+        let currentLang = 'id';
+
+        // FORMAT RUPIAH
+        function formatRp(val) {
+            if (val === null || val === undefined) return '-';
+            return 'Rp' + val.toLocaleString('id-ID');
+        }
+
+        // RENDER PRODUCTS GRID
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            const filtered = activeCategory === 'all' 
+                ? productsState 
+                : productsState.filter(p => p.cat === activeCategory);
+
+            filtered.forEach(product => {
+                const card = document.createElement('div');
+                card.className = "product-card bg-white rounded-2xl overflow-hidden border border-amber-100 shadow-sm hover:shadow-lg flex flex-col justify-between";
+                
+                const p250Formatted = formatRp(product.price250);
+                const p1kFormatted = formatRp(product.price1k);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 bg-amber-50 overflow-hidden">
+                            <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover">
+                            <span class="absolute top-3 right-3 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+                                ${product.cat}
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-lg text-charcoal mb-3">${product.name}</h4>
+                            <div class="space-y-1.5 text-sm bg-cream p-3 rounded-xl border border-amber-100">
+                                <div class="flex justify-between items-center text-gray-600">
+                                    <span>Kemasan 250g:</span>
+                                    <span class="font-bold text-primary">${p250Formatted}</span>
+                                </div>
+                                <div class="flex justify-between items-center text-gray-600">
+                                    <span>Kemasan 1kg:</span>
+                                    <span class="font-bold text-primary-dark">${p1kFormatted}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <a href="https://wa.me/6282322920307?text=Halo%20V2%20Snack,%20saya%20mau%20pesan%20${encodeURIComponent(product.name)}" target="_blank" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-2.5 rounded-xl transition flex items-center justify-center gap-2 shadow-sm text-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Beli Sekarang
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // TAB FILTER FUNCTIONALITY
+        function filterCategory(cat) {
+            activeCategory = cat;
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.className = "tab-btn px-5 py-2.5 rounded-full font-semibold text-sm transition bg-primary text-white shadow";
+                } else {
+                    btn.className = "tab-btn px-5 py-2.5 rounded-full font-semibold text-sm transition bg-white text-gray-700 hover:bg-amber-100 border border-gray-200";
+                }
+            });
+            renderProducts();
+        }
+
+        // MULTI-LANGUAGE ENGINE
+        function changeLanguage(lang) {
+          currentLang = lang;
+          const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (i18n[lang] && i18n[lang][key]) {
+            // Gunakan innerHTML agar tag <span> pembungkus gradasi ter-render sempurna
+            el.innerHTML = i18n[lang][key];
+            }
+           });
+          }
+
+        // MODAL UTILITIES
+        function openAdminLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // LOGIN HANDLER
+        function handleLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('adminPassword').value;
+            if (pass === '!adminV2Snack') {
+                closeModal('loginModal');
+                document.getElementById('adminModal').classList.remove('hidden');
+                document.getElementById('adminPassword').value = '';
+            } else {
+                alert('Password Admin Salah!');
+            }
+        }
+
+        function logoutAdmin() {
+            closeModal('adminModal');
+        }
+
+        // BATCH PRICE CALCULATOR
+        function applyPriceBatch(e) {
+            e.preventDefault();
+            const mode = document.getElementById('priceMode').value; // increase / decrease
+            const type = document.getElementById('priceType').value; // percent / flat
+            const value = parseFloat(document.getElementById('priceValue').value);
+            const target = document.getElementById('priceTarget').value; // all / specific category
+
+            if (isNaN(value) || value <= 0) {
+                alert('Masukkan nilai perubahan harga yang valid.');
+                return;
+            }
+
+            productsState = productsState.map(product => {
+                if (target !== 'all' && product.cat !== target) return product;
+
+                let newP250 = product.price250;
+                let newP1k = product.price1k;
+
+                const calc = (current) => {
+                    if (current === null) return null;
+                    let result = current;
+                    if (type === 'percent') {
+                        const diff = (current * value) / 100;
+                        result = mode === 'increase' ? current + diff : current - diff;
+                    } else {
+                        result = mode === 'increase' ? current + value : current - value;
+                    }
+                    return Math.max(0, Math.round(result));
+                };
+
+                return {
+                    ...product,
+                    price250: calc(newP250),
+                    price1k: calc(newP1k)
+                };
+            });
+
+            renderProducts();
+            alert('Perubahan harga batch berhasil diterapkan!');
+        }
+
+        // RESET PRICE FUNCTION
+        function resetPrices() {
+            productsState = JSON.parse(JSON.stringify(initialProducts));
+            renderProducts();
+            alert('Harga berhasil di-reset ke data awal.');
+        }
+
+        // INITIAL RENDER
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+        });
+    </script>
+</body>
+</html>
